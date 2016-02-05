@@ -31,24 +31,23 @@ public class MainActivity extends AppCompatActivity {
         int[] imageResources = {R.drawable.pushup, R.drawable.situp, R.drawable.squats, R.drawable.leglift, R.drawable.plank, R.drawable.jumpingjacks, R.drawable.pullup, R.drawable.cycling, R.drawable.walking, R.drawable.jogging, R.drawable.swimming, R.drawable.climbing};
         String[] exerciseTypes = {"reps", "reps", "reps", "min", "min","min", "reps", "min", "min", "min", "min", "min"};
         String[] exerciseNames = {"Pushups", "Situps", "Squats", "Leg-lift", "Plank", "Jumping Jacks", "Pullups", "Cycling", "Walking", "Jogging", "Swimming", "Stair-climbing"};
-        int[] num = {350, 200, 225, 25, 25, 10, 100, 12, 20, 12, 13, 15};
+        double[] num = {350, 200, 225, 25, 25, 10, 100, 12, 20, 12, 13, 15};
 
         exerciseArrayList = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             exerciseArrayList.add(new Exercise(imageResources[i], num[i], exerciseTypes[i], exerciseNames[i]));
         }
+        Button prev = (Button) findViewById(R.id.prev);
+        prev.setVisibility(View.INVISIBLE);
+        Button next = (Button) findViewById(R.id.next);
 
         viewPager = (ViewPager)findViewById(R.id.view_pager);
         adapter = new CustomSlideAdapter(this, exerciseArrayList);
         viewPager.setAdapter(adapter);
 
         TextView calorieText = (TextView) findViewById(R.id.numCalories);
-        pageListener = new PageListener(exerciseArrayList, calorieText);
+        pageListener = new PageListener(exerciseArrayList, calorieText, prev, next);
         viewPager.addOnPageChangeListener(pageListener);
-        Button prev = (Button) findViewById(R.id.prev);
-        prev.bringToFront();
-        Button next = (Button) findViewById(R.id.next);
-        next.bringToFront();
 
     }
 
@@ -82,8 +81,14 @@ public class MainActivity extends AppCompatActivity {
         if (num.matches("")) {
             calorieText.setText("0");
         } else {
-            int burnedCalories = currentExercise.convert(Integer.parseInt(num));
-            calorieText.setText(Integer.toString(burnedCalories));
+            String burned;
+            double burnedCalories = currentExercise.convert(Integer.parseInt(num));
+            if (burnedCalories % 1 == 0) {
+                burned = String.valueOf((int)burnedCalories);
+            } else {
+                burned = String.valueOf(burnedCalories);
+            }
+            calorieText.setText(burned);
             currentExercise.getTextView().setText(num);
         }
     }
@@ -96,9 +101,15 @@ public class MainActivity extends AppCompatActivity {
         if (numCalories.matches("")) {
             numExercise.setText("0");
         } else {
-            System.out.println(numCalories);
             int calories = Integer.parseInt(numCalories);
-            numExercise.setText(Integer.toString(currentExercise.update(calories)));
+            double amount = currentExercise.update(calories);
+            String num;
+            if (amount % 1 == 0) {
+                num = String.valueOf((int)amount);
+            } else {
+                num = String.valueOf(amount);
+            }
+            numExercise.setText(num);
         }
 
     }

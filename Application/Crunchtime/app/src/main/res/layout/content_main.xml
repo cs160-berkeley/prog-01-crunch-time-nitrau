@@ -28,6 +28,7 @@
             android:layout_height="275dp">
 
             <LinearLayout
+                android:focusableInTouchMode="true"
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_centerInParent="true"
@@ -35,7 +36,6 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:cursorVisible="true"
                     android:inputType="number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                     android:imeOptions="actionDone"
                     android:singleLine="true"
                     android:gravity="center"
-                    android:textSize="100sp"/>
+                    android:textSize="80sp"/>
 
                 <TextView
                     android:textColor="#000"
@@ -62,7 +62,7 @@
         <Button
             android:onClick="onConvertButtonClicked"
             android:id="@+id/convert"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Convert"
             android:background="#000"
             android:textColor="#fff"
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/button"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="100dp">
+            android:layout_marginBottom="80dp">
 
             <Button
                 android:id="@+id/prev"

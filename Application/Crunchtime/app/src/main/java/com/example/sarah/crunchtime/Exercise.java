@@ -10,12 +10,12 @@ import org.w3c.dom.Text;
 public class Exercise {
 
     private int image;
-    private int conversion;
+    private double conversion;
     private String exerciseType;
     private String exerciseName;
     private TextView textView;
 
-    public Exercise(int image, int conversion, String exerciseType, String exerciseName) {
+    public Exercise(int image, double conversion, String exerciseType, String exerciseName) {
         this.image = image;
         this.conversion = conversion;
         this.exerciseName = exerciseName;
@@ -30,8 +30,8 @@ public class Exercise {
         this.textView = textView;
     }
 
-    public int convert(int number) {
-        return number * 100 / this.conversion;
+    public double convert(double number) {
+        return Math.floor(number * 100 / this.conversion * 10) / 10;
     }
 
     public int getImage() {
@@ -42,8 +42,8 @@ public class Exercise {
         return exerciseType;
     }
 
-    public int update(int number) {
-        int doNumber = number * conversion / 100;
+    public double update(double number) {
+        double doNumber = Math.floor(number * conversion / 10) / 10;
         return doNumber;
     }
 
