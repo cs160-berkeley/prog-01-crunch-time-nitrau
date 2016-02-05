@@ -12,11 +12,13 @@ public class Exercise {
     private int image;
     private int conversion;
     private String exerciseType;
+    private String exerciseName;
     private TextView textView;
 
-    public Exercise(int image, int conversion, String exerciseType) {
+    public Exercise(int image, int conversion, String exerciseType, String exerciseName) {
         this.image = image;
         this.conversion = conversion;
+        this.exerciseName = exerciseName;
         this.exerciseType = exerciseType;
     }
 
@@ -43,7 +45,9 @@ public class Exercise {
     public int update(int number) {
         int doNumber = number * conversion / 100;
         return doNumber;
-//        System.out.println(doNumber);
-//        textView.setText(Integer.toString(doNumber));
+    }
+
+    public String getExerciseName() {
+        return exerciseName;
     }
 }

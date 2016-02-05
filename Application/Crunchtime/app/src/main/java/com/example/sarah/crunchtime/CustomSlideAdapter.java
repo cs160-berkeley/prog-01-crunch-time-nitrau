@@ -51,6 +51,8 @@ public class CustomSlideAdapter extends PagerAdapter {
         ImageView imgView = (ImageView)itemView.findViewById(R.id.image_view);
         TextView typeView = (TextView)itemView.findViewById(R.id.exercise_type);
         TextView numView = (TextView)itemView.findViewById(R.id.calories_burned);
+        TextView nameView = (TextView)itemView.findViewById(R.id.exercise_name);
+        nameView.setText(exerciseArrayList.get(position).getExerciseName());
         imgView.setImageResource(exerciseArrayList.get(position).getImage());
         typeView.setText(exerciseArrayList.get(position).getExerciseType());
         exerciseArrayList.get(position).setTextView(numView);

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewParent;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -29,11 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         int[] imageResources = {R.drawable.pushup, R.drawable.situp, R.drawable.squats, R.drawable.leglift, R.drawable.plank, R.drawable.jumpingjacks, R.drawable.pullup, R.drawable.cycling, R.drawable.walking, R.drawable.jogging, R.drawable.swimming, R.drawable.climbing};
         String[] exerciseTypes = {"reps", "reps", "reps", "min", "min","min", "reps", "min", "min", "min", "min", "min"};
+        String[] exerciseNames = {"Pushups", "Situps", "Squats", "Leg-lift", "Plank", "Jumping Jacks", "Pullups", "Cycling", "Walking", "Jogging", "Swimming", "Stair-climbing"};
         int[] num = {350, 200, 225, 25, 25, 10, 100, 12, 20, 12, 13, 15};
 
         exerciseArrayList = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            exerciseArrayList.add(new Exercise(imageResources[i], num[i], exerciseTypes[i]));
+            exerciseArrayList.add(new Exercise(imageResources[i], num[i], exerciseTypes[i], exerciseNames[i]));
         }
 
         viewPager = (ViewPager)findViewById(R.id.view_pager);
@@ -43,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         TextView calorieText = (TextView) findViewById(R.id.numCalories);
         pageListener = new PageListener(exerciseArrayList, calorieText);
         viewPager.addOnPageChangeListener(pageListener);
+        Button prev = (Button) findViewById(R.id.prev);
+        prev.bringToFront();
+        Button next = (Button) findViewById(R.id.next);
+        next.bringToFront();
 
     }
 
@@ -68,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onConvertButtonClicked(View view) {
+    public void onBurnButtonClicked(View view) {
         Exercise currentExercise = exerciseArrayList.get(viewPager.getCurrentItem());
         TextView calorieText = (TextView) findViewById(R.id.numCalories);
         EditText numExercise = (EditText)currentExercise.getTextView();
@@ -81,4 +87,20 @@ public class MainActivity extends AppCompatActivity {
             currentExercise.getTextView().setText(num);
         }
     }
+
+    public void onConvertButtonClicked(View view) {
+        Exercise currentExercise = exerciseArrayList.get(viewPager.getCurrentItem());
+        EditText calorieText = (EditText) findViewById(R.id.numCalories);
+        String numCalories = calorieText.getText().toString();
+        TextView numExercise = currentExercise.getTextView();
+        if (numCalories.matches("")) {
+            numExercise.setText("0");
+        } else {
+            System.out.println(numCalories);
+            int calories = Integer.parseInt(numCalories);
+            numExercise.setText(Integer.toString(currentExercise.update(calories)));
+        }
+
+    }
+
 }
