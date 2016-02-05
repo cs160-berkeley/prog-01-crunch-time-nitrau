@@ -29,7 +29,7 @@ public class Exercise {
     }
 
     public int convert(int number) {
-        return number / this.conversion * 100;
+        return number * 100 / this.conversion;
     }
 
     public int getImage() {
@@ -41,7 +41,7 @@ public class Exercise {
     }
 
     public int update(int number) {
-        int doNumber = number / 100 * conversion;
+        int doNumber = number * conversion / 100;
         return doNumber;
 //        System.out.println(doNumber);
 //        textView.setText(Integer.toString(doNumber));

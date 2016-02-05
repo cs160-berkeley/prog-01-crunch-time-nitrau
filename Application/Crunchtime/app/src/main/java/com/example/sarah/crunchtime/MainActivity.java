@@ -69,15 +69,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onConvertButtonClicked(View view) {
+        Exercise currentExercise = exerciseArrayList.get(viewPager.getCurrentItem());
         TextView calorieText = (TextView) findViewById(R.id.numCalories);
-        EditText numExercise = (EditText) findViewById(R.id.numberInput);
+        EditText numExercise = (EditText)currentExercise.getTextView();
         String num = numExercise.getText().toString();
         if (num.matches("")) {
             calorieText.setText("0");
         } else {
-            Exercise currentExercise = exerciseArrayList.get(viewPager.getCurrentItem());
             int burnedCalories = currentExercise.convert(Integer.parseInt(num));
-            System.out.println(burnedCalories);
             calorieText.setText(Integer.toString(burnedCalories));
             currentExercise.getTextView().setText(num);
         }
