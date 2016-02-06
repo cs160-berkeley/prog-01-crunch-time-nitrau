@@ -13,12 +13,10 @@ See [CrunchTime](https://youtu.be/f58y5Fh8ZUU)
 ## Screenshots
 
 <img src="screenshots/main.png" height="400" alt="Screenshot"/>
-<img src="screenshots/example1.png" height="400" alt="example1"/>
-<img src="screenshots/example2.png" height="400" alt="example2"/>
+<img src="screenshots/example1.PNG" height="400" alt="example1"/>
+<img src="screenshots/example2.PNG" height="400" alt="example2"/>
 
 ## Acknowledgments
 
 * Hat tip to anyone who's code was used
 * Any other support
-
-*Feel free to enhance your README. For Markdown syntax, see [the GitHub Guides](https://guides.github.com/features/mastering-markdown/). Remove this line in your submission.*
