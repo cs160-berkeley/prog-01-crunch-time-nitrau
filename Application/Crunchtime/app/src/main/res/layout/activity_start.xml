@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/itemBackground"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.sarah.crunchtime.StartActivity">
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/app_name"
+        android:textSize="40dp"
+        android:textColor="@color/colorText"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/weight_guide"
+        android:layout_below="@id/app_name"
+        android:textColor="@color/colorText"
+
+        android:layout_marginTop="80dp"
+        android:text="@string/weight_guide"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/weight"
+        android:layout_below="@id/weight_guide"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/weight_input"
+            android:padding="2dp"
+            android:text=""
+            android:background="#fff"
+            android:inputType="number"
+            android:textColor="@color/colorText"
+            android:minWidth="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorText"
+            android:text="lbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_marginLeft="30dp"
+            android:onClick="onEnterClick"
+            android:background="#000"
+            android:textColor="#fff"
+            android:text="@string/enter"
+            android:layout_width="40dp"
+            android:layout_height="25dp" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

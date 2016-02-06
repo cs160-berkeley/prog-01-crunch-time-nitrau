@@ -1,18 +1,20 @@
 # PROG 01: Crunch Time
 
-Briefly describe your app here.
+Crunch Time is a calorie conversion application for Android. The app allows the user to see how many calories they have burned for an amount of exercise, or how much exercise they need to burn a target amount of calories.
 
 ## Authors
 
-FirstName LastName ([your_email@berkeley.edu](mailto:your_email@berkeley.edu))
+Sarah Au ([sau@berkeley.edu](mailto:sau@berkeley.edu))
 
 ## Demo Video
 
-See [your demo video title here] (https://link_to_your_video)
+See [CrunchTime](https://youtu.be/f58y5Fh8ZUU)
 
 ## Screenshots
 
 <img src="screenshots/main.png" height="400" alt="Screenshot"/>
+<img src="screenshots/example1.png" height="400" alt="example1"/>
+<img src="screenshots/example2.png" height="400" alt="example2"/>
 
 ## Acknowledgments
 

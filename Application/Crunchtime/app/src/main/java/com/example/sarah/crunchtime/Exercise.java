@@ -14,12 +14,14 @@ public class Exercise {
     private String exerciseType;
     private String exerciseName;
     private TextView textView;
+    private double factor;
 
-    public Exercise(int image, double conversion, String exerciseType, String exerciseName) {
+    public Exercise(int image, double conversion, String exerciseType, String exerciseName, double weight) {
         this.image = image;
         this.conversion = conversion;
         this.exerciseName = exerciseName;
         this.exerciseType = exerciseType;
+        this.factor = weight / 150;
     }
 
     public TextView getTextView() {
@@ -31,7 +33,8 @@ public class Exercise {
     }
 
     public double convert(double number) {
-        return Math.floor(number * 100 / this.conversion * 10) / 10;
+        double burned = factor * number * 100 / this.conversion;
+        return Math.floor(burned * 10) / 10;
     }
 
     public int getImage() {
@@ -42,9 +45,9 @@ public class Exercise {
         return exerciseType;
     }
 
-    public double update(double number) {
-        double doNumber = Math.floor(number * conversion / 10) / 10;
-        return doNumber;
+    public int update(double number) {
+        double doNumber = number * conversion / 100 / factor;
+        return (int)Math.ceil(doNumber);
     }
 
     public String getExerciseName() {

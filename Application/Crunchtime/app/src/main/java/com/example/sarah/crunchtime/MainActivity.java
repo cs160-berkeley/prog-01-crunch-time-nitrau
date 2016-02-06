@@ -1,5 +1,6 @@
 package com.example.sarah.crunchtime;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(StartActivity.EXTRA_MESSAGE);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -32,11 +37,13 @@ public class MainActivity extends AppCompatActivity {
         String[] exerciseTypes = {"reps", "reps", "reps", "min", "min","min", "reps", "min", "min", "min", "min", "min"};
         String[] exerciseNames = {"Pushups", "Situps", "Squats", "Leg-lift", "Plank", "Jumping Jacks", "Pullups", "Cycling", "Walking", "Jogging", "Swimming", "Stair-climbing"};
         double[] num = {350, 200, 225, 25, 25, 10, 100, 12, 20, 12, 13, 15};
+        int weight = Integer.parseInt(message);
 
         exerciseArrayList = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            exerciseArrayList.add(new Exercise(imageResources[i], num[i], exerciseTypes[i], exerciseNames[i]));
+            exerciseArrayList.add(new Exercise(imageResources[i], num[i], exerciseTypes[i], exerciseNames[i], weight));
         }
+
         Button prev = (Button) findViewById(R.id.prev);
         prev.setVisibility(View.INVISIBLE);
         Button next = (Button) findViewById(R.id.next);
@@ -82,14 +89,13 @@ public class MainActivity extends AppCompatActivity {
             calorieText.setText("0");
         } else {
             String burned;
-            double burnedCalories = currentExercise.convert(Integer.parseInt(num));
+            double burnedCalories = currentExercise.convert(Double.parseDouble(num));
             if (burnedCalories % 1 == 0) {
                 burned = String.valueOf((int)burnedCalories);
             } else {
                 burned = String.valueOf(burnedCalories);
             }
             calorieText.setText(burned);
-            currentExercise.getTextView().setText(num);
         }
     }
 
@@ -101,14 +107,9 @@ public class MainActivity extends AppCompatActivity {
         if (numCalories.matches("")) {
             numExercise.setText("0");
         } else {
-            int calories = Integer.parseInt(numCalories);
-            double amount = currentExercise.update(calories);
-            String num;
-            if (amount % 1 == 0) {
-                num = String.valueOf((int)amount);
-            } else {
-                num = String.valueOf(amount);
-            }
+            double calories = Double.parseDouble(numCalories);
+            int amount = currentExercise.update(calories);
+            String num = String.valueOf(amount);
             numExercise.setText(num);
         }
 
